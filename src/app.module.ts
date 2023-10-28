@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UrlModule } from './url/url.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Url } from './url/url.model';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { Url } from './url/url.model';
     }),
     UrlModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}

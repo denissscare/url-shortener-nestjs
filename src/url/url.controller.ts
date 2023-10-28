@@ -5,11 +5,9 @@ import {
   Get,
   Param,
   Post,
-  Res,
 } from '@nestjs/common';
 import { SaveUrlDto } from './dto/save-url.dto';
 import { UrlService } from './url.service';
-import { Response } from 'express';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Url } from './url.model';
 
@@ -43,13 +41,5 @@ export class UrlController {
   @Delete('/:alias')
   delete(@Param('alias') alias: string) {
     return this.urlService.deleteUrl(alias);
-  }
-
-  @ApiOperation({ summary: 'Redirect on URL by URL-alias' })
-  @ApiResponse({ status: 200, type: Url })
-  @Get('/:alias/go')
-  async redirect(@Param('alias') alias: string, @Res() res: Response) {
-    const link = await this.urlService.getUrl(alias);
-    return res.redirect(301, link.url);
   }
 }
