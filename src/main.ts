@@ -17,7 +17,6 @@ async function bootstrap() {
   const documet = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, documet);
 
-  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(port, () => console.log(`server start on port ${port}`));
 }
